@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>js</title>
+<style>
+div{
+	text-align:center;
+	}
+#input_two{
+		background:#06F;
+	}
+label{
+	    text-align:center;
+	}
+</style>
+
+<script>
+function js1(){
+	var x;
+	var geshi;
+	geshi=document.getElementById("input_one");
+	x=document.getElementById("input_one").value;
+	  
+	   var len = 0; 
+	  for (var i=0; i<x.length; i++)
+	   { 
+	   if(x.charCodeAt(i)>31&&x.charCodeAt(i)<127)//英文及英文字符+数字ASCII码范围
+		 { 
+		   len++; 
+		 } 
+		 else //中文ASCII码范围大于126（是否包括中文字符？？？）
+		 { 
+		   len+=2; 
+		 }
+	   } 
+	   
+	   if(len==0)//必须填写
+	   {
+		   var lab;
+		   geshi.style.borderColor="red";
+		   lab=document.getElementById("label");
+		   lab.innerHTML="姓名，不能为空";
+		   lab.style.color="red";
+		   return 0;}
+	   if(len>16||len<3)//判断输入是否达到要求，此为未达到要求的判断
+	   {
+		   var lab;
+		   gehsi.style.borderColor="yellow";
+		   lab=document.getElementById("label");
+		   lab.innerHTML="字符数目未达要求";
+		   lab.style.color="yellow";
+		   return 0;
+	   }
+		 
+		   var lab;
+		   geshi.style.borderColor="green";
+		   lab=document.getElementById("label");
+		   lab.innerHTML="名称格式正确";
+		   lab.style.color="green";
+	}
+</script>
+</head>
+
+<body>
+<div>
+名称<input type="text" id="input_one" name="border"  placeholder="请输入">
+<button type="button"  id="input_two" onclick="js1()">验证</button>
+<br/>
+<label id="label">必填，长度为4~16个字符</label>
+<div>
+
+</body>
+</html>
